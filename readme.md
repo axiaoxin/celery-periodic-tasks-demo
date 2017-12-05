@@ -6,11 +6,11 @@
 cd into the root path of the project
 
 
-- running a celery worker for consuming the tasks
+- run a celery worker to consume the tasks
 
     celery worker -A app -l debug
 
-- running a celery beat for producing the tasks
+- run a celery beat to produce the tasks periodically
 
     celery beat -A app -l debug
 
