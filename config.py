@@ -2,7 +2,7 @@ from celery.schedules import crontab
 
 broker_url = 'redis://'
 
-result_backend = 'redis'
+result_backend = 'redis://'
 
 timezone = 'Asia/Shanghai'
 
@@ -13,12 +13,12 @@ imports = [
 beat_schedule = {
     'print-arg-every-1-seconds': {
         'task': 'tasks.print_tasks.print_arg',
-        'schedule': 1, #crontab(minute='*/1'),
+        'schedule': 1,
         'args': ('hello',)
     },
-    'print-args-every-2-seconds': {
+    'print-args-every-1-minutes': {
         'task': 'tasks.print_tasks.print_args',
-        'schedule': 2, #crontab(minute='*/1'),
-        'args': ('hello',)
+        'schedule': crontab(minute='*/1'),
+        'args': ('world',)
     },
 }
